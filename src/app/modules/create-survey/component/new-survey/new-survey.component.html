@@ -1,0 +1,23 @@
+<div *ngIf="shouldRender">
+    <form class="row" [formGroup]="surveyFormRef">
+        <div class="mx-3">
+            <label>Name of Survey</label>
+            <input type="text" class="form-control" formControlName="name">
+        </div>
+
+        <div class="mx-3">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="description">
+        </div>
+    </form>
+
+    <button (click)="onAddQuestion()" class="btn-primary mt-3 p-3">Add Question</button>
+
+    <div *ngIf="isAddQue">
+        <app-question></app-question>
+    </div>
+
+    <ng-container *ngFor="let element of surveyElementsForm.value">
+
+    </ng-container>
+</div>

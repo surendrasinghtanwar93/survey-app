@@ -1,0 +1,12 @@
+<div *ngIf="!isNewSurvey && !isOldSurvey">
+  <button (click)="onCreate()" class="btn-success mx-3">Create New Form</button>
+  <button (click)="onUpdate()" class="btn-success mx-3">Update Old Form</button>
+</div>
+
+<div *ngIf="isNewSurvey">
+  <app-new-survey></app-new-survey>
+</div>
+
+<div *ngIf="isOldSurvey">
+  <app-update-survey></app-update-survey>
+</div>

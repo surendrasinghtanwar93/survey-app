@@ -1,0 +1,48 @@
+<!----------------------------------------------------------------------------------------------------------------------
+ - © 2018 - 2019 Infosys Limited, Bangalore, India; Infosys McCamish Systems, USA. All Rights Reserved                 -
+ - Infosys and Infosys McCamish are registered trademarks of the respective companies.                                 -
+ -                                                                                                                     -
+ - Release Version: 1.0                                                                                                -
+ -                                                                                                                     -
+ - Except for any free or open source software components embedded in this Infosys proprietary software program        -
+ - ("Program"), this Program is protected by copyright laws, international treaties and other pending or existing      -
+ - intellectual property rights in India, the United States and other countries. Except as expressly permitted,        -
+ - any unauthorized reproduction, storage, transmission in any form or by any means (including without limitation      -
+ - electronic, mechanical, printing, photocopying, recording or otherwise), or any distribution of this Program,       -
+ - or any portion of it, may result in severe civil and criminal penalties, and will be prosecuted to the maximum      -
+ - extent possible under the law.                                                                                      -
+ ---------------------------------------------------------------------------------------------------------------------->
+
+<div *ngIf="shouldRender" class="radio-box w-100">
+  <form [formGroup]="subSectionFormRef">
+    <div class="form-group" id="{{xPathOfField}}" *ngIf="fieldConfig.enabled">
+      <label class="lable-header">
+        {{fieldConfig.label}} <span *ngIf="fieldRequired" class="required">*</span>
+      </label>
+
+      <div *ngFor="let option of listOptions" class="custom-control-inline">
+        <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="{{xPathOfField}}.{{option.value}}"
+            [value]="option.value" [formControlName]="fieldConfig.name" (change)="onchange($event)">
+          <label class="custom-control-label" for="{{xPathOfField}}.{{option.value}}">
+            <span>{{option.label}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" id="{{xPathOfField}}" *ngIf="!fieldConfig.enabled">
+      <label class="lable-header">{{fieldConfig.label}}</label>
+      <div *ngFor="let option of listOptions" class="custom-control-inline">
+        <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="{{xPathOfField}}.{{option.value}}" disabled
+            [value]="option.value" [formControlName]="fieldConfig.name" (change)="onchange($event)">
+          <label class="custom-control-label" for="{{xPathOfField}}.{{option.value}}">
+            <span>{{option.label}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>
